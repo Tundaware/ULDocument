@@ -744,6 +744,7 @@ NSString *ULDocumentUnhandeledSaveErrorNotificationErrorKey			= @"error";
 	self.lastFileOpenDate = [NSDate new];
 	
 	if (!_isReadOnly) {
+		[_presenter endPresentation];
 		_presenter = [[ULFilePresentationProxy alloc] initWithOwner: self];
 		[_presenter beginPresentationOnURL: url];
 	}
@@ -913,6 +914,7 @@ NSString *ULDocumentUnhandeledSaveErrorNotificationErrorKey			= @"error";
 	
 	// Requires the activation of a new presenter
 	if (!_presenter) {
+		[_presenter endPresentation];
 		_presenter = [[ULFilePresentationProxy alloc] initWithOwner: self];
 		[_presenter beginPresentationOnURL: url];
 	}
